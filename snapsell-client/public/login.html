@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+ Alwin Singh
+ P1935996
+ DIT/FT/1B/01
+ BED CA2   
+ -->
+
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>SnapSell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            overflow: hidden;
+        }
+
+        .login-page {
+            position: relative
+        }
+
+        .login-page::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: -1;
+            background: url(https://wallpaperaccess.com/full/99810.jpg);
+            background-size: cover;
+            /* -webkit-filter: blur(10px);
+            filter: blur(10px); */
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .login-page .container {
+            min-height: 100vh;
+            z-index: 999;
+            padding: 20px;
+            position: relative
+        }
+
+        .login-page .form-holder {
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 50px
+        }
+
+        .login-page .form-holder .info,
+        .login-page .form-holder .form {
+            min-height: 70vh;
+            padding: 40px;
+            height: 100%
+        }
+
+        .login-page .form-holder div[class*='col-'] {
+            padding: 0
+        }
+
+        .login-page .form-holder .info {
+            background: #d9534f;
+            color: #fff
+        }
+
+        .login-page .form-holder .info h1 {
+            font-size: 2.5em;
+            font-weight: 600
+        }
+
+        .login-page .form-holder .info p {
+            font-weight: 300
+        }
+
+        .login-page .form-holder .form .form-group {
+            position: relative;
+            margin-bottom: 30px
+        }
+
+        .login-page .form-holder .form .content {
+            width: 100%
+        }
+
+        .login-page .form-holder .form form {
+            width: 100%;
+            max-width: 400px
+        }
+
+        .login-page .form-holder .form #login,
+        .login-page .form-holder .form #register {
+            margin-bottom: 20px;
+            cursor: pointer
+        }
+
+        .login-page .form-holder .form a.forgot-pass,
+        .login-page .form-holder .form a.signup {
+            font-size: 0.9em;
+            color: #85b4f2
+        }
+
+        .login-page .form-holder .form small {
+            color: #aaa
+        }
+
+        .login-page .form-holder .form .terms-conditions label {
+            cursor: pointer;
+            color: #aaa;
+            font-size: 0.9em
+        }
+
+        .login-page .copyrights {
+            width: 100%;
+            z-index: 9999;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: #fff
+        }
+
+        @media (max-width: 991px) {
+
+            .login-page .info,
+            .login-page .form {
+                min-height: auto !important
+            }
+
+            .login-page .info {
+                padding-top: 100px !important;
+                padding-bottom: 100px !important
+            }
+        }
+
+
+        input.input-material {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0
+        }
+
+        input.input-material.is-invalid {
+            border-color: #dc3545 !important
+        }
+
+        input.input-material:focus {
+            border-color: #796AEE
+        }
+
+        input.input-material~label {
+            color: #aaa;
+            position: absolute;
+            top: 14px;
+            left: 0;
+            cursor: text;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            font-weight: 300
+        }
+
+        input.input-material~label.active {
+            font-size: 0.8rem;
+            top: -10px;
+            color: #796AEE
+        }
+
+        input.input-material.is-invalid~label {
+            color: #dc3545
+        }
+
+        button,
+        input {
+            outline: none !important;
+        }
+
+        .login-page .form-holder .form .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page login-page">
+        <div class="container d-flex align-items-center">
+            <div class="form-holder has-shadow">
+                <div class="row">
+                    <!-- Logo & Information Panel-->
+                    <div class="col-lg-6">
+                        <div class="info d-flex align-items-center">
+                            <div class="content">
+                                <div class="logo">
+                                    <h1>SnapSell</h1>
+                                </div>
+                                <p>It's probably broken.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Panel    -->
+                    <div class="col-lg-6 bg-white">
+                        <div class="form d-flex align-items-center">
+                            <div class="content">
+                                <div style="display: none;" id="alertbox">
+                                </div>
+                                <form method="post" class="form-validate" novalidate="novalidate">
+                                    <div class="form-group">
+                                        <input placeholder="Enter username" id="login-username" type="text"
+                                            name="loginUsername" required="" data-msg="Please enter your username"
+                                            class="input-material">
+                                        <label for="login-username" class="label-material"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input placeholder="Enter password" id="login-password" type="password"
+                                            name="loginPassword" required="" data-msg="Please enter your password"
+                                            class="input-material">
+                                        <label for="login-password" class="label-material"></label>
+                                    </div><a id="login" href="#" class="btn btn-danger">Login</a>
+                                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                                </form>
+                                <!-- <a href="#" class="forgot-pass">Forgot Password?</a> <br> -->
+                                <small>Do not have an
+                                    account? </small><a href="/register/" class="signup">Signup</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        var allUsersArr = [];
+        //The array is used to store all the users' name which is then used to proof check if the username input by user for login is valid or not
+        axios.get(`http://localhost:3000/users/`)
+            .then((response) => {
+                const users = response.data;
+                users.forEach((users) => {
+                    allUsersArr.push(users.username);
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        $(document).ready(function () {
+            localStorage.clear();
+
+            $("#login").click(function () {
+                localStorage.clear();
+
+                var id = $('#login-username').val();
+                var pwd = $('#login-password').val();
+                var data = "{\"username\":\"" + id + "\", \"password\":\"" + pwd + "\"}";
+                console.log(data);
+
+
+                if (pwd == "" || id == "") {
+                    $("#alertbox").empty();
+                    $('#alertbox').css('display', 'block');
+                    $("#alertbox").append(
+                        `<div class="alert alert-danger alert-dismissible fade show">Empty field(s)!
+                            </div>`
+                    );
+                    console.log("Error!");
+                    return;
+                }
+
+                //Userfound is used to depict if the user's name was found or not
+                //If it is false, it will say invalid username
+                var userfound = false;
+                for (var i = 0; i < allUsersArr.length; i++) {
+                    if (id == allUsersArr[i]) {
+                        userfound = true;
+                        $("#alertbox").empty();
+                        $('#alertbox').css('display', 'none');
+                    }
+                }
+
+                if (userfound) {} else {
+                    $("#alertbox").empty();
+                    $('#alertbox').css('display', 'block');
+                    $("#alertbox").append(
+                        `<div class="alert alert-danger alert-dismissible fade show">Invalid Username!
+                            </div>`);
+                }
+
+
+                $.ajax({
+                    url: 'http://localhost:3000/user/login',
+                    type: 'POST',
+                    data: data,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data, textStatus, xhr) {
+                        if (data != null) {
+                            //Sets the localstorage to store the token and user's data
+                            localStorage.setItem('token', data.token);
+                            localStorage.setItem('userInfo', data.UserData);
+                            window.location.assign("http://localhost:3001/index/");
+                        } else {
+                            console.log("Error");
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        //If bcrypt passwords comparison do not match, it will display the error of 'invalid password'
+                        console.log('Error in Operation');
+                        $("#alertbox").empty();
+                        $('#alertbox').css('display', 'block');
+                        $("#alertbox").append(
+                            `<div class="alert alert-danger alert-dismissible fade show">Invalid Password!
+                            </div>`);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

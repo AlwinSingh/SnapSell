@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+ Alwin Singh
+ P1935996
+ DIT/FT/1B/01
+ BED CA2   
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snapsell Listings</title>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: url(https://wallpaperaccess.com/full/99810.jpg);
+            background-size: cover;
+        }
+
+        .form-control {
+            box-shadow: none;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            border-color: #33cabb;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-header.col {
+            padding: 0 !important;
+        }
+
+        .navbar {
+            background: transparent;
+            padding-left: 26px;
+            padding-right: 26px;
+            /* border-bottom: 1px solid #dfe3e8; */
+            border-radius: 0;
+        }
+
+        .nav-link {
+            color: rgb(231, 231, 231) !important;
+            font-size: 19px !important;
+        }
+
+        .nav-link:hover {
+            color: #d9534f !important;
+        }
+
+        .nav-link img {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            margin: -8px 0;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .navbar .navbar-brand,
+        .navbar .navbar-brand:hover,
+        .navbar .navbar-brand:focus {
+            color: rgb(231, 231, 231);
+            padding-left: 0;
+            font-size: 25px;
+            padding-right: 50px;
+        }
+
+        .navbar .navbar-brand b {
+            font-weight: bold;
+            color: red;
+        }
+
+        .navbar .form-inline {
+            display: inline-block;
+        }
+
+        .navbar .nav li {
+            position: relative;
+        }
+
+        .navbar .nav li a {
+            color: #888;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding-right: 35px;
+            border-color: #dfe3e8;
+            border-radius: 4px !important;
+            box-shadow: none
+        }
+
+        .search-box .input-group-addon {
+            min-width: 35px;
+            border: none;
+            background: transparent;
+            position: absolute;
+            right: 0;
+            z-index: 9;
+            padding: 7px;
+            height: 100%;
+        }
+
+        .search-box i {
+            color: #a0a5b1;
+            font-size: 19px;
+        }
+
+        .navbar .nav .btn-primary,
+        .navbar .nav .btn-primary:active {
+            color: #fff;
+            background: #33cabb;
+            padding-top: 8px;
+            padding-bottom: 6px;
+            vertical-align: middle;
+            border: none;
+        }
+
+        .navbar .nav .btn-primary:hover,
+        .navbar .nav .btn-primary:focus {
+            color: #fff;
+            outline: none;
+            background: #31bfb1;
+        }
+
+        .navbar .navbar-right li:first-child a {
+            padding-right: 30px;
+        }
+
+        .navbar .nav-item i {
+            font-size: 18px;
+        }
+
+        .navbar .dropdown-item i {
+            font-size: 16px;
+            min-width: 22px;
+        }
+
+        .navbar ul.nav li.active a,
+        .navbar ul.nav li.open>a {
+            background: transparent !important;
+        }
+
+        .navbar .nav .get-started-btn {
+            min-width: 120px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .navbar ul.nav li.open>a.get-started-btn {
+            color: #fff;
+            background: #31bfb1 !important;
+        }
+
+        .navbar .dropdown-menu {
+            border-radius: 1px;
+            border-color: #e5e5e5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+        }
+
+        .navbar .nav .dropdown-menu li {
+            color: #999;
+            font-weight: normal;
+        }
+
+        .navbar .nav .dropdown-menu li a,
+        .navbar .nav .dropdown-menu li a:hover,
+        .navbar .nav .dropdown-menu li a:focus {
+            padding: 8px 20px;
+            line-height: normal;
+        }
+
+        .navbar .navbar-form {
+            border: none;
+        }
+
+        .navbar .dropdown-menu.form-wrapper {
+            width: 280px;
+            padding: 20px;
+            left: auto;
+            right: 0;
+            font-size: 14px;
+        }
+
+        .navbar .dropdown-menu.form-wrapper a {
+            color: #33cabb;
+            padding: 0 !important;
+        }
+
+        .navbar .dropdown-menu.form-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .form-wrapper .hint-text {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .navbar .form-wrapper .social-btn .btn,
+        .navbar .form-wrapper .social-btn .btn:hover {
+            color: #fff;
+            margin: 0;
+            padding: 0 !important;
+            font-size: 13px;
+            border: none;
+            transition: all 0.4s;
+            text-align: center;
+            line-height: 34px;
+            width: 47%;
+            text-decoration: none;
+        }
+
+        .navbar .social-btn .btn-primary {
+            background: #507cc0;
+        }
+
+        .navbar .social-btn .btn-primary:hover {
+            background: #4676bd;
+        }
+
+        .navbar .social-btn .btn-info {
+            background: #64ccf1;
+        }
+
+        .navbar .social-btn .btn-info:hover {
+            background: #4ec7ef;
+        }
+
+        .navbar .social-btn .btn i {
+            margin-right: 5px;
+            font-size: 16px;
+            position: relative;
+            top: 2px;
+        }
+
+        .navbar .form-wrapper .form-footer {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 13px;
+        }
+
+        .navbar .form-wrapper .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .form-wrapper .checkbox-inline input {
+            margin-top: 3px;
+        }
+
+        .or-seperator {
+            margin-top: 32px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .or-seperator b {
+            color: #666;
+            padding: 0 8px;
+            width: 30px;
+            height: 30px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 26px;
+            background: #fff;
+            display: inline-block;
+            border: 1px solid #e0e0e0;
+            border-radius: 50%;
+            position: relative;
+            top: -15px;
+            z-index: 1;
+        }
+
+        .navbar .checkbox-inline {
+            font-size: 13px;
+        }
+
+        .navbar .navbar-right .dropdown-toggle::after {
+            display: none;
+        }
+
+        @media (min-width: 1200px) {
+            .form-inline .input-group {
+                width: 300px;
+                margin-left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .dropdown-menu.form-wrapper {
+                width: 100%;
+                padding: 10px 15px;
+                background: transparent;
+                border: none;
+            }
+
+            .navbar .form-inline {
+                display: block;
+            }
+
+            .navbar .input-group {
+                width: 100%;
+            }
+
+            .navbar .nav .btn-primary,
+            .navbar .nav .btn-primary:active {
+                display: block;
+            }
+        }
+
+        /* DASHBOARD CSS */
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15rem;
+            -webkit-transition: margin .25s ease-out;
+            -moz-transition: margin .25s ease-out;
+            -o-transition: margin .25s ease-out;
+            transition: margin .25s ease-out;
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 15rem;
+        }
+
+        #page-content-wrapper {
+            min-width: 100vw;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: 0;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
+
+        .main-box.no-header {
+            padding-top: 20px;
+        }
+
+        .main-box {
+            background: #FFFFFF;
+            -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+            -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+            -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+            -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+            box-shadow: 1px 1px 2px 0 #CCCCCC;
+            margin-bottom: 16px;
+            -webikt-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .table a.table-link.danger {
+            color: #e74c3c;
+        }
+
+        .label {
+            border-radius: 3px;
+            font-size: 0.875em;
+            font-weight: 600;
+        }
+
+        .user-list tbody td .user-subhead {
+            font-size: 0.875em;
+            font-style: italic;
+        }
+
+        .user-list tbody td .user-link {
+            display: block;
+            font-size: 1.25em;
+            padding-top: 3px;
+            margin-left: 60px;
+        }
+
+        a {
+            color: #3498db;
+            outline: none !important;
+        }
+
+        .user-list tbody td>img {
+            position: relative;
+            max-width: 50px;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .table thead tr th {
+            text-transform: uppercase;
+            font-size: 0.875em;
+        }
+
+        .table thead tr th {
+            border-bottom: 2px solid #e7ebee;
+        }
+
+        .table tbody tr td:first-child {
+            font-size: 1.125em;
+            font-weight: 300;
+        }
+
+        .table tbody tr td {
+            font-size: 0.875em;
+            vertical-align: middle;
+            border-top: 1px solid #e7ebee;
+            padding: 12px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        fetch("/header/")
+            .then(response => {
+                return response.text()
+            })
+            .then(data => {
+                document.querySelector("header").innerHTML = data;
+            });
+    </script>
+
+    <header></header>
+
+    <div class="container bootstrap snippet pt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box no-header clearfix">
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table class="table user-list">
+                                <thead>
+                                    <tr>
+                                        <th><span>User</span></th>
+                                        <th><span>Created</span></th>
+                                        <th class="text-center"><span>Actions</span></th>
+                                        <th><span>Role</span></th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="userdetails">
+                                    <!-- <tr>
+                                        <td class="userdetails">
+                                        </td>
+                                        <td class="usercreated">2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-default">pending</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">marlon@brando.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
+                                            <a href="#" class="user-link">Full name 2</a>
+                                            <span class="user-subhead">Admin</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">marlon@brando.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr> -->
+                                    <!-- <tr>
+                                        <td>
+                                            <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+                                            <a href="#" class="user-link">Full name 3</a>
+                                            <span class="user-subhead">Member</span>
+                                        </td>
+                                        <td>2013/08/12</td>
+                                        <td class="text-center">
+                                            <span class="label label-danger">inactive</span>
+                                        </td>
+                                        <td>
+                                            <a href="#">marlon@brando.com</a>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        // API url
+        const baseUrl = "http://localhost:3000";
+        if (localStorage.hasOwnProperty("userInfo")) {
+            cli_id = localStorage.getItem("userInfo")
+        }
+        const userid = cli_id[7] + cli_id[8];
+
+        let users;
+        let profilepicurl;
+
+        axios.get(`${baseUrl}/users/`)
+            .then((response) => {
+                users = response.data;
+                users.forEach((users, index) => {
+                    if (users.profile_pic_url.length < 1) {
+                        profilepicurl =
+                            `data:image/png;base64,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`;
+                    } else {
+                        profilepicurl = users.profile_pic_url;
+                    }
+                    var regexname = users.username.split('_').join(' ');
+                    $(".userdetails").append(`
+                                    <tr>
+                                        <td>
+                                            <img src="${profilepicurl}" alt="">
+                                            <a href="#" class="user-link">${regexname}</a>
+                                        </td>
+                                        <td>${users.created_at}</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-danger del-button" data-index=${index}>Delete</button>
+                                        </td>
+                                        <td>
+                                            <span>${users.usertype}</span>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a href="#" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>`);
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+        $(document).on("click", ".del-button", function () {
+            const index = parseInt($(this).attr("data-index"));
+            const user = users[index];
+            var userid = user.id;
+            alert("Admin: User Deleted!");
+            window.location.assign("http://localhost:3001/dashboard/");
+            axios.delete(`${baseUrl}/users/${userid}`)
+                .then((res) => {
+                    // change button to deleted on success
+                    const deleteHtml = `
+                    <button class="btn btn-primary disabled float-left">Deleted</button>
+                    `;
+                });
+        });
+
+
+        $(".btnlogout").click(function () {
+            $.ajax({
+                url: 'http://localhost:3000/user/logout',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    //Clear local storage and change the page
+                    //This ensures persistent logout
+                    window.localStorage.clear();
+                    window.location.assign("http://localhost:3001");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

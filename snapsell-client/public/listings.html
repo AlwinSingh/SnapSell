@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+ Alwin Singh
+ P1935996
+ DIT/FT/1B/01
+ BED CA2   
+ -->
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snapsell Listings</title>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: url(https://wallpaperaccess.com/full/99810.jpg);
+            background-size: cover;
+        }
+
+        .form-control {
+            box-shadow: none;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            border-color: #33cabb;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-header.col {
+            padding: 0 !important;
+        }
+
+        .navbar {
+            background: transparent;
+            padding-left: 26px;
+            padding-right: 26px;
+            /* border-bottom: 1px solid #dfe3e8; */
+            border-radius: 0;
+        }
+
+        .nav-link {
+            color: rgb(231, 231, 231) !important;
+            font-size: 19px !important;
+        }
+
+        .nav-link:hover {
+            color: #d9534f !important;
+        }
+
+        .nav-link img {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            margin: -8px 0;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .navbar .navbar-brand,
+        .navbar .navbar-brand:hover,
+        .navbar .navbar-brand:focus {
+            color: rgb(231, 231, 231);
+            padding-left: 0;
+            font-size: 25px;
+            padding-right: 50px;
+        }
+
+        .navbar .navbar-brand b {
+            font-weight: bold;
+            color: red;
+        }
+
+        .navbar .form-inline {
+            display: inline-block;
+        }
+
+        .navbar .nav li {
+            position: relative;
+        }
+
+        .navbar .nav li a {
+            color: #888;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding-right: 35px;
+            border-color: #dfe3e8;
+            border-radius: 4px !important;
+            box-shadow: none
+        }
+
+        .search-box .input-group-addon {
+            min-width: 35px;
+            border: none;
+            background: transparent;
+            position: absolute;
+            right: 0;
+            z-index: 9;
+            padding: 7px;
+            height: 100%;
+        }
+
+        .search-box i {
+            color: #a0a5b1;
+            font-size: 19px;
+        }
+
+        .navbar .nav .btn-primary,
+        .navbar .nav .btn-primary:active {
+            color: #fff;
+            background: #33cabb;
+            padding-top: 8px;
+            padding-bottom: 6px;
+            vertical-align: middle;
+            border: none;
+        }
+
+        .navbar .nav .btn-primary:hover,
+        .navbar .nav .btn-primary:focus {
+            color: #fff;
+            outline: none;
+            background: #31bfb1;
+        }
+
+        .navbar .navbar-right li:first-child a {
+            padding-right: 30px;
+        }
+
+        .navbar .nav-item i {
+            font-size: 18px;
+        }
+
+        .navbar .dropdown-item i {
+            font-size: 16px;
+            min-width: 22px;
+        }
+
+        .navbar ul.nav li.active a,
+        .navbar ul.nav li.open>a {
+            background: transparent !important;
+        }
+
+        .navbar .nav .get-started-btn {
+            min-width: 120px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .navbar ul.nav li.open>a.get-started-btn {
+            color: #fff;
+            background: #31bfb1 !important;
+        }
+
+        .navbar .dropdown-menu {
+            border-radius: 1px;
+            border-color: #e5e5e5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+        }
+
+        .navbar .nav .dropdown-menu li {
+            color: #999;
+            font-weight: normal;
+        }
+
+        .navbar .nav .dropdown-menu li a,
+        .navbar .nav .dropdown-menu li a:hover,
+        .navbar .nav .dropdown-menu li a:focus {
+            padding: 8px 20px;
+            line-height: normal;
+        }
+
+        .navbar .navbar-form {
+            border: none;
+        }
+
+        .navbar .dropdown-menu.form-wrapper {
+            width: 280px;
+            padding: 20px;
+            left: auto;
+            right: 0;
+            font-size: 14px;
+        }
+
+        .navbar .dropdown-menu.form-wrapper a {
+            color: #33cabb;
+            padding: 0 !important;
+        }
+
+        .navbar .dropdown-menu.form-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .form-wrapper .hint-text {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .navbar .form-wrapper .social-btn .btn,
+        .navbar .form-wrapper .social-btn .btn:hover {
+            color: #fff;
+            margin: 0;
+            padding: 0 !important;
+            font-size: 13px;
+            border: none;
+            transition: all 0.4s;
+            text-align: center;
+            line-height: 34px;
+            width: 47%;
+            text-decoration: none;
+        }
+
+        .navbar .social-btn .btn-primary {
+            background: #507cc0;
+        }
+
+        .navbar .social-btn .btn-primary:hover {
+            background: #4676bd;
+        }
+
+        .navbar .social-btn .btn-info {
+            background: #64ccf1;
+        }
+
+        .navbar .social-btn .btn-info:hover {
+            background: #4ec7ef;
+        }
+
+        .navbar .social-btn .btn i {
+            margin-right: 5px;
+            font-size: 16px;
+            position: relative;
+            top: 2px;
+        }
+
+        .navbar .form-wrapper .form-footer {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 13px;
+        }
+
+        .navbar .form-wrapper .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .form-wrapper .checkbox-inline input {
+            margin-top: 3px;
+        }
+
+        .or-seperator {
+            margin-top: 32px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .or-seperator b {
+            color: #666;
+            padding: 0 8px;
+            width: 30px;
+            height: 30px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 26px;
+            background: #fff;
+            display: inline-block;
+            border: 1px solid #e0e0e0;
+            border-radius: 50%;
+            position: relative;
+            top: -15px;
+            z-index: 1;
+        }
+
+        .navbar .checkbox-inline {
+            font-size: 13px;
+        }
+
+        .navbar .navbar-right .dropdown-toggle::after {
+            display: none;
+        }
+
+        @media (min-width: 1200px) {
+            .form-inline .input-group {
+                width: 300px;
+                margin-left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .dropdown-menu.form-wrapper {
+                width: 100%;
+                padding: 10px 15px;
+                background: transparent;
+                border: none;
+            }
+
+            .navbar .form-inline {
+                display: block;
+            }
+
+            .navbar .input-group {
+                width: 100%;
+            }
+
+            .navbar .nav .btn-primary,
+            .navbar .nav .btn-primary:active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <script>
+        fetch("/header/")
+            .then(response => {
+                return response.text()
+            })
+            .then(data => {
+                document.querySelector("header").innerHTML = data;
+            });
+    </script>
+
+    <header></header>
+
+    <div class="container pt-5">
+        <div style="display: none;" id="alertbox">
+        </div>
+        <div class="row listings">
+        </div>
+    </div>
+
+
+
+    <!-- The Modal -->
+    <div class="modal" id="offerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div style="display: none;" id="alertboxmodal">
+                </div>
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title modaltitle"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="inputOfferAmt" class="pl-5 ml-1">Offer Amount $</label>
+                    <div class="col-sm-4 float-left">
+                        <input class="form-control float-left" id="inputOfferAmt" placeholder="$???" type="text">
+                    </div>
+                    <button type="button" class="btn btn-danger float-right makeoffer">Make
+                        Offer</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        // API url
+        const baseUrl = "http://localhost:3000";
+
+        let listings;
+
+        if (localStorage.hasOwnProperty("userInfo")) {
+            cli_id = localStorage.getItem("userInfo")
+        }
+        const userid = cli_id[7] + cli_id[8];
+
+
+        var usertypeArr = [];
+        axios.get(`${baseUrl}/users/` + userid)
+            .then((response) => {
+                const users = response.data;
+                users.forEach((users) => {
+                    usertypeArr.push(users.usertype);
+
+                    if (usertypeArr[0] == "admin") {
+                        console.log("Logged in as administrator");
+                        $(".adminheaderadd").append(`
+                        <li class="nav-item pl-5"><a href="/dashboard/" class="nav-link">Dashboard</a></li>`);
+                    }
+
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+
+        function getMeta(url, callback) {
+            var img = new Image();
+            img.src = url;
+            img.onload = function () {
+                callback(this.width, this.height);
+            }
+        }
+
+        axios.get(`${baseUrl}/listings/`)
+            .then((response) => {
+                listings = response.data;
+                listings.forEach((listings, index) => {
+                    getMeta(
+                        `${listings.listings_pic}`,
+                        function (width, height) {
+                            //console.log(width + 'px ' + height + 'px')
+                            if (width > 533 || height > 400) {
+                                console.log(listings.title + " has unoptimised listing image");
+                            }
+                        }
+                    );
+
+                    if (listings.listings_pic.length < 1) {
+                        listingspic =
+                            "https://www.cowgirlcontractcleaning.com/wp-content/uploads/sites/360/2018/05/placeholder-img-4.jpg";
+                    } else {
+                        listingspic = listings.listings_pic;
+                    }
+                    $(".listings").append(`
+                    <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top mx-auto d-block" style="width: 348px; height: 253px;" src="${listingspic}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title pt-2">
+                            <div class="text-primary">${listings.title}</div>
+                        </h4>
+                        <h5 class="py-2">Price: $${listings.price}</h5>
+                        <p class="card-text">${listings.description}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm likebutton float-left text-danger" data-index=${index}><i class="fa fa-heart"></i></button>
+                        <button class="btn btn-sm unlikebutton float-left text-muted" data-index=${index}><i class="fa fa-heart-o"></i></button>
+                        <button type="button" class="btn btn-danger ml-5 px-4 del-button btnoffer" 
+                        data-index=${index} data-toggle="modal" data-target="#offerModal">Offer</button>
+                        <button class="btn btn-sm float-right text-muted">${listings.totallikes}</button>                    
+                    </div>
+                </div>
+            </div>`)
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+        $(document).on("click", ".btnoffer", function () {
+            const index = parseInt($(this).attr("data-index"));
+            const listing = listings[index];
+            offerpostlistingid = index;
+            console.log(offerpostlistingid);
+            console.log(listing);
+            $(".modaltitle").empty();
+            $(".modal-body").empty();
+            $(".modaltitle").append(`${listing.title}`);
+            $(".modal-body").append(
+                `<b>Price: $</b>${listing.price} <br><br><b>Description:</b> ${listing.description}`);
+        });
+
+        $(document).on("click", ".makeoffer", function () {
+            const listing = listings[offerpostlistingid];
+            var offeramt = $("#inputOfferAmt").val();
+
+            if (offeramt < 1 || isNaN(offeramt)) {
+                $("#alertboxmodal").empty();
+                $('#alertboxmodal').css('display', 'block');
+                $("#alertboxmodal").append(
+                    `<div class="alert alert-danger alert-dismissible fade show">Invalid Listing Amount!
+                            </div>`);
+            }
+
+            var data = "{\"offer\":\"" + offeramt + "\", \"fk_offeror_id\":\"" + userid + "\"}";
+            //console.log(listing.listingid)
+
+            $.ajax({
+                url: `http://localhost:3000/listings/${listing.listingid}/offers`,
+                type: 'POST',
+                data: data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, textStatus, xhr) {
+                    if (data != null) {
+
+                        $("#alertboxmodal").empty();
+                        $('#alertboxmodal').css('display', 'block');
+                        $("#alertboxmodal").append(
+                            `<div class="alert alert-success alert-dismissible fade show">Successfully made offer!
+                            </div>`);
+                        setTimeout(function () {
+                                $('#offerModal').modal('toggle');
+                                $("#alertboxmodal").empty();
+                                $('#alertboxmodal').css('display', 'none');
+                                $("#inputOfferAmt").val("");
+                            },
+                            2500);
+                    } else {
+
+                        $("#alertboxmodal").empty();
+                        $('#alertboxmodal').css('display', 'block');
+                        $("#alertboxmodal").append(
+                            `<div class="alert alert-danger alert-dismissible fade show">Invalid Listing Amount!
+                            </div>`);
+
+                        console.log("Error");
+                        setTimeout(function () {
+                                $("#alertboxmodal").empty();
+                                $('#alertboxmodal').css('display', 'none');
+                            },
+                            2500);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                    $("#alertboxmodal").empty();
+                    $('#alertboxmodal').css('display', 'block');
+                    $("#alertboxmodal").append(
+                        `<div class="alert alert-danger alert-dismissible fade show">Unable to make offer!
+                            </div>`);
+
+                    setTimeout(function () {
+                            $("#alertboxmodal").empty();
+                            $('#alertboxmodal').css('display', 'none');
+                        },
+                        2500);
+                }
+            });
+            return false;
+        });
+
+        //toggleLikes {
+        $(document).on("click", ".likebutton", function () {
+            const index = parseInt($(this).attr("data-index"));
+            const listing = listings[index];
+            console.log("Listing Title: " + listing.title + "  Listing ID: " + listing.listingid);
+
+            var likeuserid = userid;
+            var listingid = listing.listingid;
+
+
+            var data = "{\"userid\":\"" + likeuserid + "\", \"listingid\":\"" + listingid +
+                "\"}";
+            console.log(data);
+
+            $.ajax({
+                url: 'http://localhost:3000/likes',
+                type: 'POST',
+                data: data,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    if (data != null) {
+
+                        console.log("Data is not null and posted!");
+                        //$(".likebutton").append(`<i class="fa fa-heart"></i>`);
+                        //$(".likebutton").addClass("text-danger");
+                        //$(".fa-heart").addClass("text-danger");
+                        window.location.assign("http://localhost:3001/listings/");
+                    } else {
+                        console.log("Error");
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    $("#alertbox").empty();
+                    $('#alertbox').css('display', 'block');
+                    $("#alertbox").append(
+                        `<div class="alert alert-danger alert-dismissible fade show">Cannot like a listing twice!</div>`
+                    );
+                    console.log('Error in Operation');
+                    setTimeout(function () {
+                            $('#alertbox').css('display', 'none');
+                        },
+                        2000);
+                }
+            });
+            return true;
+        });
+
+        var listingliked = [];
+
+
+
+        //un-toggleLikes
+        $(document).on("click", ".unlikebutton", function () {
+            const index = parseInt($(this).attr("data-index"));
+            const listing = listings[index];
+            var listingid = listing.listingid;
+            console.log(listingid);
+
+
+            axios.delete(`${baseUrl}/unlike/${userid}/${listingid}`)
+                .then((res) => {
+                    alert("Unliked listing!");
+                    window.location.assign("http://localhost:3001/listings/");
+                });
+        });
+
+
+        $(".btnlogout").click(function () {
+            $.ajax({
+                url: 'http://localhost:3000/user/logout',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    //Clear local storage and change the page
+                    //This ensures persistent logout
+                    window.localStorage.clear();
+                    window.location.assign("http://localhost:3001");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
